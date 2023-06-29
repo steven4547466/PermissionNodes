@@ -25,7 +25,7 @@ namespace PermissionNodes
             {
                 ServerRoles serverRoles = ev.Player.ReferenceHub.serverRoles;
                 serverRoles.AdminChatPerms = role.HasPermission("base.admin.chat");
-                serverRoles._hub.queryProcessor.GameplayData = role.HasPermission("base.moderation.gameplaydata");
+                serverRoles._hub.queryProcessor.GameplayData = role.HasPermission("base.moderation.gameplaydata") || role.HasPermission("base.admin.playersensitivedata");
                 serverRoles.Permissions = role.GetNecessaryFlags();
                 if (role.HasBadge)
                 {
@@ -122,19 +122,19 @@ namespace PermissionNodes
                                     array[0] = "0";
                                 }
 
-                                if (num >= 0L && num <= 3600L && !player.HasPermission("base.admin.ban.shortterm"))
+                                if (num >= 0L && num <= 3600L && !player.HasPermission("base.commands.admin.ban.shortterm"))
                                 {
-                                    ev.Sender.Respond($"You don't have permissions to execute this command.\\nRequired permission: base.moderation.kick", false);
+                                    ev.Sender.Respond($"You don't have permissions to execute this command.\\nRequired permission: base.commands.admin.ban.shortterm", false);
                                     return false;
                                 }
-                                if (num > 3600L && num <= 86400L && !player.HasPermission("base.admin.ban.day"))
+                                if (num > 3600L && num <= 86400L && !player.HasPermission("base.commands.admin.ban.day"))
                                 {
-                                    ev.Sender.Respond($"You don't have permissions to execute this command.\\nRequired permission: base.admin.ban.day", false);
+                                    ev.Sender.Respond($"You don't have permissions to execute this command.\\nRequired permission: base.commands.admin.ban.day", false);
                                     return false;
                                 }
-                                if (num > 86400L && !player.HasPermission("base.admin.ban.longterm"))
+                                if (num > 86400L && !player.HasPermission("base.commands.admin.ban.longterm"))
                                 {
-                                    ev.Sender.Respond($"You don't have permissions to execute this command.\\nRequired permission: base.admin.ban.longterm", false);
+                                    ev.Sender.Respond($"You don't have permissions to execute this command.\\nRequired permission: base.commands.admin.ban.longterm", false);
                                     return false;
                                 }
                             }

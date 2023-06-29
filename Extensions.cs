@@ -402,17 +402,17 @@ namespace PermissionNodes
                 flags |= (ulong)PlayerPermissions.PlayerSensitiveDataAccess;
             }
 
-            if (role.HasPermission("base.admin.ban.longterm"))
+            if (role.HasPermission("base.commands.admin.ban.longterm"))
             {
                 flags |= (ulong)PlayerPermissions.LongTermBanning;
             }
 
-            if (role.HasPermission("base.admin.ban.day"))
+            if (role.HasPermission("base.commands.admin.ban.day"))
             {
                 flags |= (ulong)PlayerPermissions.BanningUpToDay;
             }
 
-            if (role.HasPermission("base.admin.ban.shortterm"))
+            if (role.HasPermission("base.commands.admin.ban.shortterm"))
             {
                 flags |= (ulong)PlayerPermissions.KickingAndShortTermBanning;
             }
