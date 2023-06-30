@@ -170,6 +170,7 @@ function addRole(role) {
 
     input.addEventListener("input", () => {
       role.name = input.value
+      renderUsers()
     })
 
     leftColumn.appendChild(label)
@@ -268,6 +269,7 @@ function addRole(role) {
     input.addEventListener("input", () => {
       displayName.innerText = input.value
       role.display_name = input.value
+      renderUsers()
     })
 
     leftColumn.appendChild(label)
@@ -426,6 +428,7 @@ function addRole(role) {
     deleteButton.addEventListener("click", () => {
       config.roles = config.roles.filter(r => r.name != role.name)
       renderRoles()
+      renderUsers()
     })
 
     let buttons = document.createElement("div")
@@ -470,6 +473,7 @@ function renderRoles() {
     defaultRole.name = `role#${config.roles.length}`
     config.roles.push(defaultRole)
     renderRoles()
+    renderUsers()
   })
   rightColumn.appendChild(addButton)
 }
