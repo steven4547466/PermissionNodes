@@ -85,8 +85,10 @@ function addUser(id, roleName) {
   userField.innerText = id
 
   userField.addEventListener("input", () => {
-    let user = config.users.find(user => user.id == id)
-    user.id = userField.innerText
+    let temp = config.members[id]
+    config.members[userField.innerText] = temp
+    delete config.members[id]
+    id = userField.innerText
   })
 
   let roleLabel = document.createElement("label")
@@ -108,8 +110,7 @@ function addUser(id, roleName) {
   }
 
   roleSelect.addEventListener("change", () => {
-    let user = config.users.find(user => user.id == id)
-    user.role = roleSelect.value
+    config.members[id] = roleSelect.value
   })
 
   let deleteButton = document.createElement("button")
