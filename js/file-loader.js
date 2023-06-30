@@ -84,6 +84,11 @@ function addUser(id, roleName) {
   userField.classList.add("has-text-success", "light-gray-outline", "rounded-corners")
   userField.innerText = id
 
+  userField.addEventListener("input", () => {
+    let user = config.users.find(user => user.id == id)
+    user.id = userField.innerText
+  })
+
   let roleLabel = document.createElement("label")
   roleLabel.classList.add("has-text-success")
   roleLabel.htmlFor = id
@@ -444,7 +449,7 @@ function renderUsers() {
   addButton.classList.add("button", "is-success", "is-small")
   addButton.innerHTML = "<i class='fas fa-plus'></i>"
   addButton.addEventListener("click", () => {
-    config.members[`${Object.keys(config.members).length}@steam`] = "role"
+    config.members[`${Object.keys(config.members).length}@steam`] = "default"
     renderUsers()
   })
   leftColumn.appendChild(addButton)
